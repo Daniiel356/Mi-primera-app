@@ -5,7 +5,7 @@
   <title>Mi App</title>
 
   <link rel="manifest" href="manifest.json">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="theme-color" content="#000000">
   <meta name="mobile-web-app-capable" content="yes">
   
@@ -14,5 +14,35 @@
 <body>
   <h1>Mi App sin Google 😄</h1>
   <button onclick="alert('Funciona')">Click</button>
+  <script>
+    // Función para activar pantalla completa
+function fs() {
+    const el = document.documentElement; // toda la página
+
+    if (el.requestFullscreen) {
+        el.requestFullscreen();
+    } else if (el.webkitRequestFullscreen) { // Safari/Chrome en iOS/Android
+        el.webkitRequestFullscreen();
+    } else if (el.msRequestFullscreen) { // IE/Edge antiguo
+        el.msRequestFullscreen();
+    }
+}
+
+// Función para salir de pantalla completa
+function efs() {
+    if (document.exitFullscreen) {
+        document.exitFullscreen();
+    } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+    } else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+    }
+}
+
+    document.addEventListener('touchstart', () => {
+fs();
+}, { once: true });
+ 
+  </script>
 </body>
 </html>
